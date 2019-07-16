@@ -116,7 +116,18 @@ X = scipy.sparse.hstack((
 ```
 
 **Train the model**<br>
+
+```python
+y_train = np.log1p(df_train['price'])
+```
+
 ```python
 model = Ridge(solver='lsqr', fit_intercept=False)
 model.fit(X_train, y_train)
 ```
+```python
+preds = model.predict(X_test)
+
+df_test['price'] = np.expm1(preds)
+```
+
