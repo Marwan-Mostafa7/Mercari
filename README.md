@@ -48,7 +48,7 @@ Here we see how `price` varies with `item condition`
 4                              Women/Jewelry/Necklaces  
 `
 
-We Split the item category column into **3 categories** based on the `\` symbol
+We Split the item category column into **3 categories** based on the `\` symbol <br>
 `
 def split_categ(c):
         try:
@@ -56,13 +56,13 @@ def split_categ(c):
             return c1, c2, c3
         except:
             return ("No label","No label","No label")
-`
+` <br>
 
-Then assign **3 extra features** to our main dataframe
+Then assign **3 extra features** to our main dataframe <br>
 
 `df['cat1'], df['cat2'], df['cat3']= zip(*df.category_name.apply(split_categ))`
-
-Visualizing the main category **Frequency plot**
+ <br>
+Visualizing the main category **Frequency plot** 
 
 ![](imgs/07_main_category.png)
 
@@ -90,7 +90,7 @@ X_cat2  = cat2_cv.fit_transform(df['cat2'])`
 Shipping and condition of items <br>
 `X_dummies = scipy.sparse.csr_matrix( pd.get_dummies(df[['shipping', 'item_condition_id']], sparse=True).values)`
 
-append all scaled and manipulated features into single feature <br>
+append all scaled and manipulated features into single **Compressed Matrix** <br>
 `X = scipy.sparse.hstack((
                         X_dummies,
                         X_desc,
