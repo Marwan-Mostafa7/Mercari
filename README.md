@@ -71,26 +71,26 @@ Visualizing the main category **Frequency plot**
 ## Modeling
 We are going to get all our explored **features** in a **single compressed matrix** and input it to **Ridge Regression model**
 
-Brand name
+Brand name <br>
 `brand_lv = LabelBinarizer(sparse_output=True)
 X_brand  = brand_lv.fit_transform(df['brand_name'])`
 
-Product name
+Product name <br>
 `name_cv = CountVectorizer(min_df=MIN_NAME_DF)
 X_name  = name_cv.fit_transform(df['name']) `
 
-Main Category
+Main Category <br>
 `cat1_cv = CountVectorizer()
 X_cat1  = cat1_cv.fit_transform(df['cat1'])`
 
-Sub Category
+Sub Category    <br>
 `cat2_cv = CountVectorizer()
 X_cat2  = cat2_cv.fit_transform(df['cat2'])`
 
-Shipping and condition of items
+Shipping and condition of items <br>
 `X_dummies = scipy.sparse.csr_matrix( pd.get_dummies(df[['shipping', 'item_condition_id']], sparse=True).values)`
 
-append all scaled and manipulated features into single feature
+append all scaled and manipulated features into single feature <br>
 `X = scipy.sparse.hstack((
                         X_dummies,
                         X_desc,
@@ -100,22 +100,7 @@ append all scaled and manipulated features into single feature
                         X_cat2
                         )).tocsr()`
 
-**Train the model**
+**Train the model**<br>
 
 `model = Ridge(solver='lsqr', fit_intercept=False)
 model.fit(X_train, y_train)`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
