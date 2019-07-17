@@ -65,8 +65,8 @@ Then assign **3 extra features** to our main dataframe <br>
 ```python
 df['cat1'], df['cat2'], df['cat3']= zip(*df.category_name.apply(split_categ))
 ```
- <br>
-Visualizing the main category **Frequency plot** 
+
+Visualizing the main category **Frequency plot** <br>
 
 ![](imgs/07_main_category.png)
 
